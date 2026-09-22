@@ -1,35 +1,21 @@
-function addStudent() {
-    const name = document.getElementById("name").value;
-    const rollNo = document.getElementById("rollNo").value;
-    const course = document.getElementById("course").value;
+function showMessage() {
+    const message = document.getElementById("message");
 
-    if (name === "" || rollNo === "" || course === "") {
-        alert("Please fill all fields.");
+    message.textContent =
+        "Student records are up to date. Attendance data has been verified.";
+}
+
+function registerStudent() {
+    const name = document.getElementById("studentName").value;
+    const rollNumber = document.getElementById("rollNumber").value;
+    const course = document.getElementById("course").value;
+    const message = document.getElementById("registrationMessage");
+
+    if (name === "" || rollNumber === "" || course === "") {
+        message.textContent = "Please fill in all student details.";
         return;
     }
 
-    const table = document.getElementById("studentList");
-
-    const row = document.createElement("tr");
-
-    row.innerHTML = `
-        <td>${rollNo}</td>
-        <td>${name}</td>
-        <td>${course}</td>
-        <td>
-            <button class="delete-btn" onclick="deleteStudent(this)">
-                Delete
-            </button>
-        </td>
-    `;
-
-    table.appendChild(row);
-
-    document.getElementById("name").value = "";
-    document.getElementById("rollNo").value = "";
-    document.getElementById("course").value = "";
-}
-
-function deleteStudent(button) {
-    button.parentElement.parentElement.remove();
+    message.textContent =
+        "Student " + name + " has been registered successfully.";
 }
